@@ -12,5 +12,5 @@ public class DemoApplication extends Application {
         //需要在清单文件中设置
         SDKInitializer.initialize(this);
     }
-
+//
 }
