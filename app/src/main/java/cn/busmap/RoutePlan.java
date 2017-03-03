@@ -81,7 +81,6 @@ public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,
     boolean isFirstLoc = true; // 是否首次定位
     EditText start;
     EditText end;
-
     // 地图相关，使用继承MapView的MyRouteMapView目的是重写touch事件实现泡泡处理
     // 如果不处理touch事件，则无需继承，直接使用MapView即可
     MapView mMapView = null;    // 地图View
@@ -99,8 +98,6 @@ public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,
 
     String startNodeStr = "天安门广场";
     String endNodeStr = "西单";
-
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
