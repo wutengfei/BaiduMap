@@ -29,7 +29,7 @@ public class MainLocationActivity extends AppCompatActivity {
     private static final int accuracyCircleFillColor = 0xAAFFFF88;
     private static final int accuracyCircleStrokeColor = 0xAA00FF00;
 
-    MapView mMapView;
+    MapView mMapView;//地图视图
     BaiduMap mBaiduMap;
 
     // UI相关
