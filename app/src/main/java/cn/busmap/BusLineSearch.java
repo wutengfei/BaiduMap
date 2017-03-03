@@ -21,7 +21,6 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.SupportMapFragment;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.busline.BusLineResult;
-import com.baidu.mapapi.search.busline.BusLineSearch;
 import com.baidu.mapapi.search.busline.BusLineSearchOption;
 import com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListener;
 import com.baidu.mapapi.search.core.PoiInfo;
@@ -41,7 +40,7 @@ import cn.busmap.overlayutil.BusLineOverlay;
 /**
  * 此demo用来展示如何进行公交线路详情检索，并使用RouteOverlay在地图上绘制 同时展示如何浏览路线节点并弹出泡泡
  */
-public class BusLineSearchDemo extends FragmentActivity implements
+public class BusLineSearch extends FragmentActivity implements
         OnGetPoiSearchResultListener, OnGetBusLineSearchResultListener,
         BaiduMap.OnMapClickListener {
     // 定位相关
@@ -56,7 +55,7 @@ public class BusLineSearchDemo extends FragmentActivity implements
     private int busLineIndex = 0;
     // 搜索相关
     private PoiSearch mSearch = null; // 搜索模块，也可去掉地图模块独立使用
-    private BusLineSearch mBusLineSearch = null;
+    private com.baidu.mapapi.search.busline.BusLineSearch mBusLineSearch = null;
     private BaiduMap mBaiduMap = null;
     BusLineOverlay overlay; // 公交路线绘制对象
 
@@ -77,7 +76,7 @@ public class BusLineSearchDemo extends FragmentActivity implements
         mBaiduMap.setOnMapClickListener(this);
         mSearch = PoiSearch.newInstance();
         mSearch.setOnGetPoiSearchResultListener(this);
-        mBusLineSearch = BusLineSearch.newInstance();
+        mBusLineSearch = com.baidu.mapapi.search.busline.BusLineSearch.newInstance();
         mBusLineSearch.setOnGetBusLineSearchResultListener(this);
         busLineIDList = new ArrayList<String>();
         overlay = new BusLineOverlay(mBaiduMap);
@@ -221,7 +220,7 @@ public class BusLineSearchDemo extends FragmentActivity implements
     @Override
     public void onGetBusLineResult(BusLineResult result) {
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(BusLineSearchDemo.this, "抱歉，未找到结果",
+            Toast.makeText(BusLineSearch.this, "抱歉，未找到结果",
                     Toast.LENGTH_LONG).show();
             return;
         }
@@ -234,7 +233,7 @@ public class BusLineSearchDemo extends FragmentActivity implements
         overlay.zoomToSpan();
         mBtnPre.setVisibility(View.VISIBLE);
         mBtnNext.setVisibility(View.VISIBLE);
-        Toast.makeText(BusLineSearchDemo.this, result.getBusLineName(),
+        Toast.makeText(BusLineSearch.this, result.getBusLineName(),
                 Toast.LENGTH_SHORT).show();
     }
 
@@ -242,7 +241,7 @@ public class BusLineSearchDemo extends FragmentActivity implements
     public void onGetPoiResult(PoiResult result) {
 
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(BusLineSearchDemo.this, "抱歉，未找到结果",
+            Toast.makeText(BusLineSearch.this, "抱歉，未找到结果",
                     Toast.LENGTH_LONG).show();
             return;
         }

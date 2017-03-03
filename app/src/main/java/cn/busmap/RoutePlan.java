@@ -63,7 +63,7 @@ import cn.busmap.overlayutil.WalkingRouteOverlay;
  * 此demo用来展示如何进行驾车、步行、公交、骑行、跨城综合路线搜索并在地图使用RouteOverlay、TransitOverlay绘制
  * 同时展示如何进行节点浏览并弹出泡泡
  */
-public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListener,
+public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,
         OnGetRoutePlanResultListener {
     // 定位相关
     LocationClient mLocClient;
@@ -307,7 +307,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
         // 移动节点至中心
         mBaidumap.setMapStatus(MapStatusUpdateFactory.newLatLng(nodeLocation));
         // show popup
-        popupText = new TextView(RoutePlanDemo.this);
+        popupText = new TextView(RoutePlan.this);
         popupText.setBackgroundResource(R.drawable.popup);
         popupText.setTextColor(0xFF000000);
         popupText.setText(nodeTitle);
@@ -324,7 +324,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
     @Override
     public void onGetWalkingRouteResult(WalkingRouteResult result) {
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(RoutePlanDemo.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -339,7 +339,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
             if (result.getRouteLines().size() > 1 ) {
                 nowResultwalk = result;
 
-                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlanDemo.this,
+                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlan.this,
                         result.getRouteLines(),
                         RouteLineAdapter.Type.WALKING_ROUTE);
                 myTransitDlg.setOnItemInDlgClickLinster(new OnItemInDlgClickListener() {
@@ -379,7 +379,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
     public void onGetTransitRouteResult(TransitRouteResult result) {
 
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(RoutePlanDemo.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -395,7 +395,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
             if (result.getRouteLines().size() > 1 ) {
                 nowResultransit = result;
 
-                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlanDemo.this,
+                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlan.this,
                         result.getRouteLines(),
                          RouteLineAdapter.Type.TRANSIT_ROUTE);
                 myTransitDlg.setOnItemInDlgClickLinster(new OnItemInDlgClickListener() {
@@ -436,7 +436,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
     @Override
     public void onGetMassTransitRouteResult(MassTransitRouteResult result) {
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(RoutePlanDemo.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点模糊，获取建议列表
@@ -452,7 +452,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
 
 
             // 列表选择
-            MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlanDemo.this,
+            MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlan.this,
                     result.getRouteLines(),
                     RouteLineAdapter.Type.MASS_TRANSIT_ROUTE);
             nowResultmass = result;
@@ -488,7 +488,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
     @Override
     public void onGetDrivingRouteResult(DrivingRouteResult result) {
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(RoutePlanDemo.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -502,7 +502,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
             if (result.getRouteLines().size() > 1 ) {
                 nowResultdrive = result;
 
-                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlanDemo.this,
+                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlan.this,
                         result.getRouteLines(),
                          RouteLineAdapter.Type.DRIVING_ROUTE);
                 myTransitDlg.setOnItemInDlgClickLinster(new OnItemInDlgClickListener() {
@@ -545,7 +545,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
     @Override
     public void onGetBikingRouteResult(BikingRouteResult result) {
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(RoutePlanDemo.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RoutePlan.this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
         }
         if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
             // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
@@ -560,7 +560,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
             if (result.getRouteLines().size() > 1 ) {
                 nowResultbike = result;
 
-                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlanDemo.this,
+                MyTransitDlg myTransitDlg = new MyTransitDlg(RoutePlan.this,
                         result.getRouteLines(),
                         RouteLineAdapter.Type.DRIVING_ROUTE);
                 myTransitDlg.setOnItemInDlgClickLinster(new OnItemInDlgClickListener() {

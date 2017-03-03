@@ -40,7 +40,6 @@ import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
 import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
-import com.baidu.mapapi.search.poi.PoiSearch;
 import com.baidu.mapapi.search.poi.PoiSortType;
 import com.baidu.mapapi.search.sug.OnGetSuggestionResultListener;
 import com.baidu.mapapi.search.sug.SuggestionResult;
@@ -55,13 +54,13 @@ import cn.busmap.overlayutil.PoiOverlay;
 /**
  * 演示poi搜索功能   即站点查询
  */
-public class PoiSearchDemo extends FragmentActivity implements
+public class PoiSearch extends FragmentActivity implements
         OnGetPoiSearchResultListener, OnGetSuggestionResultListener {
     // 定位相关
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
 
-    private PoiSearch mPoiSearch = null;
+    private com.baidu.mapapi.search.poi.PoiSearch mPoiSearch = null;
     private SuggestionSearch mSuggestionSearch = null;
     private BaiduMap mBaiduMap = null;
     private List<String> suggest;
@@ -89,7 +88,7 @@ public class PoiSearchDemo extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poisearch);
         // 初始化搜索模块，注册搜索事件监听
-        mPoiSearch = PoiSearch.newInstance();
+        mPoiSearch = com.baidu.mapapi.search.poi.PoiSearch.newInstance();
         mPoiSearch.setOnGetPoiSearchResultListener(this);
 
         // 初始化建议搜索模块，注册建议搜索事件监听
@@ -266,7 +265,7 @@ public class PoiSearchDemo extends FragmentActivity implements
      */
     public void onGetPoiResult(PoiResult result) {
         if (result == null || result.error == SearchResult.ERRORNO.RESULT_NOT_FOUND) {
-            Toast.makeText(PoiSearchDemo.this, "未找到结果", Toast.LENGTH_LONG)
+            Toast.makeText(PoiSearch.this, "未找到结果", Toast.LENGTH_LONG)
                     .show();
             return;
         }
@@ -300,7 +299,7 @@ public class PoiSearchDemo extends FragmentActivity implements
                 strInfo += ",";
             }
             strInfo += "找到结果";
-            Toast.makeText(PoiSearchDemo.this, strInfo, Toast.LENGTH_LONG)
+            Toast.makeText(PoiSearch.this, strInfo, Toast.LENGTH_LONG)
                     .show();
         }
     }
@@ -312,10 +311,10 @@ public class PoiSearchDemo extends FragmentActivity implements
      */
     public void onGetPoiDetailResult(PoiDetailResult result) {
         if (result.error != SearchResult.ERRORNO.NO_ERROR) {
-            Toast.makeText(PoiSearchDemo.this, "抱歉，未找到结果", Toast.LENGTH_SHORT)
+            Toast.makeText(PoiSearch.this, "抱歉，未找到结果", Toast.LENGTH_SHORT)
                     .show();
         } else {
-            Toast.makeText(PoiSearchDemo.this, result.getName() + ": " + result.getAddress(), Toast.LENGTH_SHORT)
+            Toast.makeText(PoiSearch.this, result.getName() + ": " + result.getAddress(), Toast.LENGTH_SHORT)
                     .show();
         }
     }
@@ -341,7 +340,7 @@ public class PoiSearchDemo extends FragmentActivity implements
                 suggest.add(info.key);
             }
         }
-        sugAdapter = new ArrayAdapter<String>(PoiSearchDemo.this, android.R.layout.simple_dropdown_item_1line, suggest);
+        sugAdapter = new ArrayAdapter<String>(PoiSearch.this, android.R.layout.simple_dropdown_item_1line, suggest);
         keyWorldsView.setAdapter(sugAdapter);
         sugAdapter.notifyDataSetChanged();
     }

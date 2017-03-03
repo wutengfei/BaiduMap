@@ -130,7 +130,7 @@ public class MainLocationActivity extends AppCompatActivity {
      * @param v
      */
     public void routeSearch(View v){
-        Intent intent=new Intent(this,RoutePlanDemo.class);
+        Intent intent=new Intent(this,RoutePlan.class);
         startActivity(intent);
     }
     /**
@@ -138,7 +138,7 @@ public class MainLocationActivity extends AppCompatActivity {
      * @param v
      */
     public void poiSearch(View v){
-        Intent intent=new Intent(this,PoiSearchDemo.class);
+        Intent intent=new Intent(this,PoiSearch.class);
         startActivity(intent);
     }
     /**
@@ -146,7 +146,7 @@ public class MainLocationActivity extends AppCompatActivity {
      * @param v
      */
     public void   busLineSearch(View v){
-        Intent intent=new Intent(this,BusLineSearchDemo.class);
+        Intent intent=new Intent(this,BusLineSearch.class);
         startActivity(intent);
     }
 
