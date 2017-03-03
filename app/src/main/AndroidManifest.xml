@@ -35,7 +35,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="NRZ8bBoV7C1TXciIuqqOqVit4lRMad5H" />
+            android:value="LNowNhtsk6C9CXaWGHa9ffUGHQUEljnS" />
 
         <activity android:name="cn.busmap.MainLocationActivity">
             <intent-filter>
