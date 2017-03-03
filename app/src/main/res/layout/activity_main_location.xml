@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dip" />
+
+    <Button
+        android:text="站点查询"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/routeSearch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="poiSearch"
+        android:id="@+id/poiSearch" />
+
+    <Button
+        android:text="线路查询"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="routeSearch"
+        android:id="@+id/routeSearch"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/poiSearch"
+        android:layout_toEndOf="@+id/poiSearch" />
+
+    <Button
+        android:text="公交查询"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/routeSearch"
+        android:layout_toRightOf="@+id/routeSearch"
+        android:layout_toEndOf="@+id/routeSearch"
+        android:onClick="busLineSearch"
+        android:id="@+id/busLineSearch" />
+
+
+</RelativeLayout>
