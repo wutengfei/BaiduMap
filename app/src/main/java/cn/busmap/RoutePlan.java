@@ -51,6 +51,7 @@ import com.baidu.mapapi.search.route.WalkingRouteLine;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
 
 import java.util.List;
+import java.util.Random;
 
 import cn.busmap.overlayutil.BikingRouteOverlay;
 import cn.busmap.overlayutil.DrivingRouteOverlay;
@@ -96,8 +97,6 @@ public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,
 
     int nowSearchType = -1 ; // 当前进行的检索，供判断浏览节点时结果使用。
 
-    String startNodeStr = "天安门广场";
-    String endNodeStr = "西单";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -782,6 +781,10 @@ public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,
                     mBtnPre.setVisibility(View.VISIBLE);
                     mBtnNext.setVisibility(View.VISIBLE);
                     dismiss();
+
+                    //到站提醒
+                    int random =(int)(Math.random()*10)+1;
+                    Toast.makeText(RoutePlan.this, "该车还有"+random+"分钟到站", Toast.LENGTH_SHORT).show();
 
                 }
             });

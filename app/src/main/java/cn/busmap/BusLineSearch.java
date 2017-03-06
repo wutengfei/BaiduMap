@@ -50,7 +50,7 @@ public class BusLineSearch extends FragmentActivity implements
     private Button mBtnPre = null; // 上一个节点
     private Button mBtnNext = null; // 下一个节点
     private int nodeIndex = -2; // 节点索引,供浏览节点时使用
-    private BusLineResult route = null; // 保存驾车/步行路线数据的变量，供浏览节点时使用
+    private BusLineResult route = null; // 保存驾车/步行路线数据的变量，供浏览节点时使用////////////////////////
     private List<String> busLineIDList = null;
     private int busLineIndex = 0;
     // 搜索相关
