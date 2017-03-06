@@ -38,15 +38,23 @@
             android:value="LNowNhtsk6C9CXaWGHa9ffUGHQUEljnS" />
 
         <activity android:name="cn.busmap.MainLocationActivity">
+
+        </activity>
+        <activity android:name="cn.busmap.BusLineSearch"></activity>
+        <activity android:name="cn.busmap.PoiSearch"></activity>
+        <activity android:name="cn.busmap.RoutePlan"></activity>
+        <activity
+            android:name="cn.busmap.LoginActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.busmap.BusLineSearch"></activity>
-        <activity android:name="cn.busmap.PoiSearch"></activity>
-        <activity android:name="cn.busmap.RoutePlan"></activity>
+        <activity
+            android:name="cn.busmap.RegisterActivity"
+            android:launchMode="singleTask"></activity>
 
 
         <!-- 声明百度定位API的定位服务 -->
