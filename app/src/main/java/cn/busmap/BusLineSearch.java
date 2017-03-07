@@ -40,8 +40,7 @@ import cn.busmap.overlayutil.BusLineOverlay;
 /**
  * 此demo用来展示如何进行公交线路详情检索，并使用RouteOverlay在地图上绘制 同时展示如何浏览路线节点并弹出泡泡
  */
-public class BusLineSearch extends FragmentActivity implements
-        OnGetPoiSearchResultListener, OnGetBusLineSearchResultListener,
+public class BusLineSearch extends FragmentActivity implements OnGetPoiSearchResultListener, OnGetBusLineSearchResultListener,
         BaiduMap.OnMapClickListener {
     // 定位相关
     LocationClient mLocClient;
@@ -50,7 +49,7 @@ public class BusLineSearch extends FragmentActivity implements
     private Button mBtnPre = null; // 上一个节点
     private Button mBtnNext = null; // 下一个节点
     private int nodeIndex = -2; // 节点索引,供浏览节点时使用
-    private BusLineResult route = null; // 保存驾车/步行路线数据的变量，供浏览节点时使用////////////////////////
+    private BusLineResult route = null; // 保存驾车/步行路线数据的变量，供浏览节点时使用
     private List<String> busLineIDList = null;
     private int busLineIndex = 0;
     // 搜索相关
@@ -61,6 +60,7 @@ public class BusLineSearch extends FragmentActivity implements
 
     boolean isFirstLoc = true; // 是否首次定位
     SupportMapFragment mMapView;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busline);
@@ -72,7 +72,7 @@ public class BusLineSearch extends FragmentActivity implements
         mBtnNext.setVisibility(View.INVISIBLE);
         mMapView = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.bmapView);
         mBaiduMap = ((SupportMapFragment) getSupportFragmentManager()
-                            .findFragmentById(R.id.bmapView)).getBaiduMap();
+                .findFragmentById(R.id.bmapView)).getBaiduMap();
         mBaiduMap.setOnMapClickListener(this);
         mSearch = PoiSearch.newInstance();
         mSearch.setOnGetPoiSearchResultListener(this);
@@ -116,7 +116,7 @@ public class BusLineSearch extends FragmentActivity implements
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
-                System.out.println(location.getLatitude()+"---------经纬度--------"+location.getLongitude());
+                System.out.println(location.getLatitude() + "---------经纬度--------" + location.getLongitude());
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(13.0f);//放大倍数
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
@@ -124,7 +124,7 @@ public class BusLineSearch extends FragmentActivity implements
         }
 
 
-        public  void onConnectHotSpotMessage(String var1, int var2) {
+        public void onConnectHotSpotMessage(String var1, int var2) {
         }
     }
 
@@ -144,11 +144,10 @@ public class BusLineSearch extends FragmentActivity implements
         // 发起poi检索，从得到所有poi中找到公交线路类型的poi，再使用该poi的uid进行公交详情搜索
         mSearch.searchInCity((new PoiCitySearchOption()).city(
                 editCity.getText().toString())
-                        .keyword(editSearchKey.getText().toString()));
+                .keyword(editSearchKey.getText().toString()));
     }
 
     public void searchNextBusline(View v) {
-
 
 
         if (busLineIndex >= busLineIDList.size()) {
@@ -195,8 +194,7 @@ public class BusLineSearch extends FragmentActivity implements
                     .getStations().get(nodeIndex).getLocation()));
             // 弹出泡泡
             popupText.setText(route.getStations().get(nodeIndex).getTitle());
-            mBaiduMap.showInfoWindow(new InfoWindow(popupText, route.getStations()
-                    .get(nodeIndex).getLocation(), 10));
+            mBaiduMap.showInfoWindow(new InfoWindow(popupText, route.getStations().get(nodeIndex).getLocation(), 10));
         }
     }
 
@@ -270,10 +268,13 @@ public class BusLineSearch extends FragmentActivity implements
     @Override
     public void onMapClick(LatLng point) {
         mBaiduMap.hideInfoWindow();
+        System.out.println("------onMapClick-----------");
     }
 
     @Override
     public boolean onMapPoiClick(MapPoi poi) {
+        System.out.println("------onMapPoiClick-----------");
+
         return false;
     }
 }

@@ -27,7 +27,7 @@
         android:resizeable="true"
         android:smallScreens="true" />
     <application
-        android:name="cn.busmap.DemoApplication"
+        android:name="cn.busmap.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
