@@ -24,6 +24,10 @@ public class RegisterActivity extends AppCompatActivity {
         et_password = (EditText) findViewById(R.id.et_password);
     }
 
+    /**
+     * 注册
+     * @param v
+     */
     public void register(View v) {
         String name = et_username.getText().toString().trim();
         String pass = et_password.getText().toString().trim();

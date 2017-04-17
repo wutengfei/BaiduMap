@@ -61,7 +61,7 @@ import cn.busmap.overlayutil.TransitRouteOverlay;
 import cn.busmap.overlayutil.WalkingRouteOverlay;
 
 /**
- * 此demo用来展示如何进行驾车、步行、公交、骑行、跨城综合路线搜索并在地图使用RouteOverlay、TransitOverlay绘制
+ * 用来展示如何进行驾车、步行、公交、骑行、跨城综合路线搜索并在地图使用RouteOverlay、TransitOverlay绘制
  * 同时展示如何进行节点浏览并弹出泡泡
  */
 public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,

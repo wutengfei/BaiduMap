@@ -17,10 +17,9 @@ import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.model.LatLng;
 
 /**
- * 此demo用来展示如何结合定位SDK实现定位，并使用MyLocationOverlay绘制定位位置 同时展示如何使用自定义图标绘制并点击时弹出泡泡
+ * 用来展示如何结合定位SDK实现定位，并使用MyLocationOverlay绘制定位位置 同时展示如何使用自定义图标绘制并点击时弹出泡泡
  */
 public class MainLocationActivity extends AppCompatActivity {
-
     // 定位相关
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
@@ -106,7 +105,7 @@ public class MainLocationActivity extends AppCompatActivity {
             }
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
-                            // 此处设置开发者获取到的方向信息，顺时针0-360
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
@@ -114,42 +113,45 @@ public class MainLocationActivity extends AppCompatActivity {
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
-                System.out.println(location.getLatitude()+"---------经纬度--------"+location.getLongitude());
+                System.out.println(location.getLatitude() + "---------经纬度--------" + location.getLongitude());
                 MapStatus.Builder builder = new MapStatus.Builder();
                 builder.target(ll).zoom(18.0f);//放大倍数
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
             }
         }
 
-        public  void onConnectHotSpotMessage(String var1, int var2) {
+        public void onConnectHotSpotMessage(String var1, int var2) {
         }
     }
 
     /**
-     * 跳转到线路查询
+     * 跳转到线路查询*
      * @param v
      */
-    public void routeSearch(View v){
-        Intent intent=new Intent(this,RoutePlan.class);
-        startActivity(intent);
-    }
-    /**
-     * 跳转到站点查询
-     * @param v
-     */
-    public void poiSearch(View v){
-        Intent intent=new Intent(this,PoiSearch.class);
-        startActivity(intent);
-    }
-    /**
-     * 跳转到公交查询
-     * @param v
-     */
-    public void   busLineSearch(View v){
-        Intent intent=new Intent(this,BusLineSearch.class);
+    public void routeSearch(View v) {
+        Intent intent = new Intent(this, RoutePlan.class);
         startActivity(intent);
     }
 
+    /**
+     * 跳转到站点查询
+     *
+     * @param v
+     */
+    public void poiSearch(View v) {
+        Intent intent = new Intent(this, PoiSearch.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转到公交查询
+     *
+     * @param v
+     */
+    public void busLineSearch(View v) {
+        Intent intent = new Intent(this, BusLineSearch.class);
+        startActivity(intent);
+    }
 
 
     @Override

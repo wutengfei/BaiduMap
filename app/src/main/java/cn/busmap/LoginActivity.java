@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         //回显用户名和密码
         readAccount();
     }
-
+    //回显用户名和密码
     public void readAccount() {
         SharedPreferences sp = getSharedPreferences("password", MODE_PRIVATE);
         String name = sp.getString("username", "");
@@ -35,7 +35,10 @@ public class LoginActivity extends AppCompatActivity {
         et_password.setText(pass);
     }
 
-
+    /**
+     * 登录
+     * @param v
+     */
     public void login(View v) {
         String name = et_username.getText().toString().trim();
         String pass = et_password.getText().toString().trim();
@@ -50,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
             } else if (user[0].getUsername().equals(name) && user[0].getPassword().equals(pass)) {
                 //把用户名和密码记在本地，用于密码回显
-                SharedPreferences sp = getSharedPreferences("password", MODE_PRIVATE);//存储路径在data/data/cn.cnu.smartbook/share_prefs
+                SharedPreferences sp = getSharedPreferences("password", MODE_PRIVATE);//存储路径在data/data/包名/share_prefs
                 //拿到sp的编辑器
                 SharedPreferences.Editor ed = sp.edit();
                 ed.putString("username", name);
@@ -69,6 +72,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 跳转到注册
+     * @param v
+     */
     public void register(View v) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);

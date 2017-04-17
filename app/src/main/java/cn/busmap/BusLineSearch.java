@@ -38,7 +38,7 @@ import java.util.List;
 import cn.busmap.overlayutil.BusLineOverlay;
 
 /**
- * 此demo用来展示如何进行公交线路详情检索，并使用RouteOverlay在地图上绘制 同时展示如何浏览路线节点并弹出泡泡
+ * 用来展示如何进行公交线路详情检索，并使用RouteOverlay在地图上绘制 同时展示如何浏览路线节点并弹出泡泡
  */
 public class BusLineSearch extends FragmentActivity implements OnGetPoiSearchResultListener, OnGetBusLineSearchResultListener,
         BaiduMap.OnMapClickListener {
