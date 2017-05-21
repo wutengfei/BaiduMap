@@ -40,8 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "用户名已存在", Toast.LENGTH_SHORT).show();
             } else if (userController.addUser(user)) {
                 Toast.makeText(RegisterActivity.this, "注册成功，请登录", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+               finish();
             }
         }
     }
