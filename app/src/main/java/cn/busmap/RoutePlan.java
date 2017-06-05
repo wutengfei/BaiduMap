@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.busmap.utils.SysApplication;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -101,6 +102,7 @@ public class RoutePlan extends Activity implements BaiduMap.OnMapClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routeplan);
+        SysApplication.getInstance().addActivity(this);
         CharSequence titleLable = "路线规划功能";
         setTitle(titleLable);
         // 初始化地图

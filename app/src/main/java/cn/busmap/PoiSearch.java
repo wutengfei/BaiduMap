@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cn.busmap.utils.SysApplication;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -87,6 +88,7 @@ public class PoiSearch extends FragmentActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poisearch);
+        SysApplication.getInstance().addActivity(this);
         // 初始化搜索模块，注册搜索事件监听
         mPoiSearch = com.baidu.mapapi.search.poi.PoiSearch.newInstance();
         mPoiSearch.setOnGetPoiSearchResultListener(this);

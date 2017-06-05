@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import cn.busmap.control.UserController;
 import cn.busmap.model.User;
+import cn.busmap.utils.SysApplication;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        SysApplication.getInstance().addActivity(this);
         getSupportActionBar().hide();
         et_username = (EditText) findViewById(R.id.et_username);
         et_password = (EditText) findViewById(R.id.et_password);

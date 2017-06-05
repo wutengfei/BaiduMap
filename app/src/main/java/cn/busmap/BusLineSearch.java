@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.busmap.utils.SysApplication;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -64,6 +65,7 @@ public class BusLineSearch extends FragmentActivity implements OnGetPoiSearchRes
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busline);
+        SysApplication.getInstance().addActivity(this);
         CharSequence titleLable = "公交线路查询功能";
         setTitle(titleLable);
         mBtnPre = (Button) findViewById(R.id.pre);
