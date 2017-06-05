@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 //创建并显示吐司对话框
                 Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(this, MainLocationActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             } else if (!user[0].getPassword().equals(pass)) {
                 Toast.makeText(this, "密码错误", Toast.LENGTH_SHORT).show();

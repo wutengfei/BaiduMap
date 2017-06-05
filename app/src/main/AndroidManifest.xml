@@ -37,7 +37,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="LNowNhtsk6C9CXaWGHa9ffUGHQUEljnS" />
 
-        <activity android:name="cn.busmap.MainLocationActivity"></activity>
+        <activity android:name="cn.busmap.MainActivity"></activity>
         <activity android:name="cn.busmap.BusLineSearch"></activity>
         <activity android:name="cn.busmap.PoiSearch"></activity>
         <activity android:name="cn.busmap.RoutePlan"></activity>

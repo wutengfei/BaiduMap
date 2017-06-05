@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
 import cn.busmap.utils.SysApplication;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -23,7 +24,7 @@ import com.baidu.mapapi.model.LatLng;
 /**
  * 用来展示如何结合定位SDK实现定位，并使用MyLocationOverlay绘制定位位置 同时展示如何使用自定义图标绘制并点击时弹出泡泡
  */
-public class MainLocationActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     // 定位相关
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
@@ -40,6 +41,7 @@ public class MainLocationActivity extends AppCompatActivity {
     Button requestLocButton;
     boolean isFirstLoc = true; // 是否首次定位
 
+    private long exitTime = 0;//用于退出应用时计算两次点击back键的时间差
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -185,36 +187,20 @@ public class MainLocationActivity extends AppCompatActivity {
     //监听返回键退出事件
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            // 创建退出对话框
-            AlertDialog isExit = new AlertDialog.Builder(this).create();
-            // 设置对话框标题
-            isExit.setTitle("系统提示");
-            // 设置对话框消息
-            isExit.setMessage("确定要退出吗");
-            // 添加选择按钮并注册监听
-            isExit.setButton("确定", listener);
-            isExit.setButton2("取消", listener);
-            // 显示对话框
-            isExit.show();
-
+            exit();
+            return false;
         }
-
-        return false;
+        return super.onKeyDown(keyCode, event);
 
     }
-
-    private DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which) {
-                case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序
-                   SysApplication.getInstance().exit();
-                    break;
-                case AlertDialog.BUTTON_NEGATIVE:// "取消"第二个按钮取消对话框
-                    break;
-                default:
-                    break;
-            }
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            SysApplication.getInstance().exit();
         }
-    };
+    }
 
 }
